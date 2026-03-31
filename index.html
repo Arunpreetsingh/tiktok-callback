@@ -4,27 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="tiktok-developers-site-verification" content="Yd70ySnEvLnvYO1z2iabfr4WYCc4Cgdz" />
-  <title>UniqueStore.us — TikTok Shop Video Tool</title>
+  <title>ShopReel — TikTok Shop Video Automation</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #f0f0f0; }
-    header { background: #111; border-bottom: 1px solid #222; padding: 18px 32px; }
-    header h1 { font-size: 1.2rem; font-weight: 600; color: #fff; }
-    .hero { padding: 80px 32px 60px; text-align: center; max-width: 720px; margin: 0 auto; }
-    .hero h2 { font-size: 2.2rem; font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
-    .hero p { font-size: 1.1rem; color: #aaa; line-height: 1.7; }
-    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; padding: 40px 32px; max-width: 960px; margin: 0 auto; }
+    header { background: #111; border-bottom: 1px solid #222; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; }
+    header h1 { font-size: 1.2rem; font-weight: 700; color: #fff; }
+    nav a { color: #aaa; text-decoration: none; margin-left: 24px; font-size: 0.9rem; }
+    nav a:hover { color: #fff; }
+    .hero { padding: 80px 32px 60px; text-align: center; max-width: 760px; margin: 0 auto; }
+    .hero h2 { font-size: 2.4rem; font-weight: 700; line-height: 1.2; margin-bottom: 18px; }
+    .hero p { font-size: 1.1rem; color: #aaa; line-height: 1.7; max-width: 600px; margin: 0 auto; }
+    .badge { display: inline-block; background: #fe2c55; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 18px; letter-spacing: 0.5px; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 40px 32px; max-width: 960px; margin: 0 auto; }
     .card { background: #161616; border: 1px solid #222; border-radius: 12px; padding: 28px; }
     .card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 10px; color: #fe2c55; }
     .card p { font-size: 0.9rem; color: #999; line-height: 1.6; }
-    .section { padding: 60px 32px; max-width: 720px; margin: 0 auto; }
-    .section h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; }
-    .section p, .section li { font-size: 0.95rem; color: #aaa; line-height: 1.8; margin-bottom: 12px; }
+    .section { padding: 60px 32px; max-width: 760px; margin: 0 auto; }
+    .section h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 24px; }
+    .section h3 { font-size: 1.1rem; font-weight: 600; margin: 24px 0 10px; color: #fe2c55; }
+    .section p, .section li { font-size: 0.95rem; color: #aaa; line-height: 1.8; margin-bottom: 10px; }
     .section ul { padding-left: 20px; }
+    .scope-block { background: #161616; border: 1px solid #222; border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; }
+    .scope-block strong { color: #fff; font-family: monospace; font-size: 0.95rem; }
+    .scope-block p { margin-top: 8px; margin-bottom: 0; }
     footer { border-top: 1px solid #222; padding: 24px 32px; text-align: center; color: #555; font-size: 0.85rem; }
     footer a { color: #777; text-decoration: none; margin: 0 12px; }
-    .badge { display: inline-block; background: #fe2c55; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 16px; }
-    /* OAuth callback */
+    footer a:hover { color: #aaa; }
     #callback { display: none; background: #111; border: 1px solid #333; border-radius: 12px; padding: 32px; margin: 40px auto; max-width: 600px; }
     #callback h3 { margin-bottom: 16px; }
     #callback textarea { width: 100%; background: #0a0a0a; border: 1px solid #333; color: #f0f0f0; padding: 12px; border-radius: 8px; font-family: monospace; font-size: 0.85rem; resize: none; margin-bottom: 12px; }
@@ -36,74 +42,74 @@
 <body>
 
 <header>
-  <h1>UniqueStore.us — TikTok Shop Automation</h1>
+  <h1>ShopReel</h1>
+  <nav>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </nav>
 </header>
 
 <section class="hero">
-  <span class="badge">TikTok Shop</span>
-  <h2>Automated Product Videos for Korean Skincare</h2>
-  <p>This tool automates the creation and publishing of TikTok Shop product videos for UniqueStore.us — a Korean skincare shop. It uses the TikTok Content Posting API to publish short-form product videos directly to the store's TikTok account.</p>
+  <span class="badge">TikTok Content Posting API</span>
+  <h2>Automated Product Videos for TikTok Shop Sellers</h2>
+  <p>ShopReel helps e-commerce sellers create and publish short-form product videos directly to their TikTok Shop accounts using the TikTok Content Posting API. Sellers connect their own TikTok account via OAuth and publish videos on their behalf.</p>
 </section>
 
 <section class="features">
   <div class="card">
-    <h3>🎬 Video Creation</h3>
-    <p>Automatically generates 30-second TikTok-format product videos with AI voiceover, captions, and product images.</p>
+    <h3>🎬 AI Video Creation</h3>
+    <p>Generates TikTok-format product videos with AI voiceover, animated captions, and Ken-Burns photo effects.</p>
   </div>
   <div class="card">
-    <h3>🤖 AI Captions</h3>
-    <p>Uses AI to generate engaging product captions, hooks, and voiceover scripts tailored for Korean skincare audiences.</p>
+    <h3>🔐 OAuth Login</h3>
+    <p>Sellers authenticate with their own TikTok account via TikTok's official OAuth 2.0 flow. No passwords stored.</p>
   </div>
   <div class="card">
-    <h3>📤 Auto Publishing</h3>
-    <p>Uploads finished videos directly to the store's TikTok account via the Content Posting API with proper captions and hashtags.</p>
+    <h3>📤 Direct Publishing</h3>
+    <p>Finished videos are uploaded and published to the authenticated seller's TikTok profile via the Content Posting API.</p>
   </div>
   <div class="card">
-    <h3>🔒 Single Account</h3>
-    <p>This tool is used exclusively for UniqueStore.us's own TikTok account. No third-party accounts are accessed or affected.</p>
+    <h3>📝 Draft Review</h3>
+    <p>Sellers can upload videos as drafts to review and edit in the TikTok app before making them public.</p>
   </div>
 </section>
 
 <div class="section">
-  <h2>How TikTok API is Used</h2>
-  <p>This application uses the following TikTok API scopes:</p>
-  <ul>
-    <li><strong>user.info.basic</strong> — to verify the authenticated account before publishing</li>
-    <li><strong>video.publish</strong> — to post product videos directly to the store's TikTok profile</li>
-    <li><strong>video.upload</strong> — to upload video files as drafts for review before publishing</li>
-  </ul>
-  <p>All API calls are made from the store owner's private machine and only target the store owner's own TikTok account. No user data is collected, stored, or shared with third parties.</p>
+  <h2>How TikTok API Scopes Are Used</h2>
+  <p>ShopReel uses the following TikTok API scopes. Each scope is required for a specific step in the video publishing workflow:</p>
+
+  <div class="scope-block">
+    <strong>user.info.basic</strong>
+    <p>Used to retrieve the authenticated user's TikTok username and display name after OAuth login. This confirms which TikTok account has been connected before any video is published, and is shown to the user in the app dashboard.</p>
+  </div>
+
+  <div class="scope-block">
+    <strong>video.upload</strong>
+    <p>Used to upload a video file to TikTok as an inbox draft. The seller receives an in-app notification, reviews the video in the TikTok app, and chooses to post or discard it. This scope enables the "draft review" workflow where sellers approve content before it goes live.</p>
+  </div>
+
+  <div class="scope-block">
+    <strong>video.publish</strong>
+    <p>Used to directly publish an approved video to the authenticated seller's TikTok profile with a caption, hashtags, and privacy settings specified by the seller. This is the primary publishing action that makes the product video live on TikTok.</p>
+  </div>
 </div>
 
-<div class="section" id="privacy-policy">
-  <h2>Privacy Policy</h2>
-  <p>Last updated: March 2026</p>
-  <p>UniqueStore.us TikTok Shop Automation ("the App") is a private automation tool used solely by UniqueStore.us to manage its own TikTok Shop content.</p>
-  <ul>
-    <li><strong>Data collected:</strong> The App uses TikTok OAuth tokens to authenticate with the TikTok API. No personal data from TikTok users is collected or stored.</li>
-    <li><strong>Data usage:</strong> OAuth tokens are stored locally and used only to publish videos to UniqueStore.us's own TikTok account.</li>
-    <li><strong>Third parties:</strong> No data is shared with any third party.</li>
-    <li><strong>Data retention:</strong> OAuth tokens are stored locally on the operator's device and can be deleted at any time.</li>
-    <li><strong>Contact:</strong> For any privacy concerns, email uniquestore.us@gmail.com</li>
-  </ul>
+<div class="section">
+  <h2>How the Integration Works</h2>
+  <ol style="padding-left:20px;">
+    <li style="color:#aaa;line-height:1.8;margin-bottom:10px;">The seller clicks "Connect TikTok Account" and is redirected to TikTok's OAuth authorization page.</li>
+    <li style="color:#aaa;line-height:1.8;margin-bottom:10px;">The seller grants permission for <code style="color:#fe2c55;">user.info.basic</code>, <code style="color:#fe2c55;">video.upload</code>, and <code style="color:#fe2c55;">video.publish</code> scopes.</li>
+    <li style="color:#aaa;line-height:1.8;margin-bottom:10px;">TikTok redirects back to this page with an authorization code. The seller copies the URL and pastes it into ShopReel to complete authentication.</li>
+    <li style="color:#aaa;line-height:1.8;margin-bottom:10px;">ShopReel calls <code style="color:#fe2c55;">user.info.basic</code> to confirm the connected account and display it to the seller.</li>
+    <li style="color:#aaa;line-height:1.8;margin-bottom:10px;">The seller selects products and ShopReel generates a product video with AI captions and voiceover.</li>
+    <li style="color:#aaa;line-height:1.8;margin-bottom:10px;">ShopReel uses <code style="color:#fe2c55;">video.upload</code> to send the video as a draft to the seller's TikTok inbox for review, or uses <code style="color:#fe2c55;">video.publish</code> to post it directly to their profile.</li>
+  </ol>
 </div>
 
-<div class="section" id="terms">
-  <h2>Terms of Service</h2>
-  <p>Last updated: March 2026</p>
-  <p>This tool is a private automation application used exclusively by UniqueStore.us. By using this application, you agree to the following:</p>
-  <ul>
-    <li>This App is for internal use by UniqueStore.us only.</li>
-    <li>The App complies with TikTok's Terms of Service and Community Guidelines.</li>
-    <li>All content published through this App is owned by UniqueStore.us.</li>
-    <li>The App will not be used to spam, harass, or violate TikTok's policies.</li>
-  </ul>
-</div>
-
-<!-- OAuth callback section — shown only when redirected from TikTok -->
+<!-- OAuth callback — shown when redirected from TikTok -->
 <div id="callback">
   <h3>✅ Authorization Successful</h3>
-  <p style="color:#aaa;margin-bottom:16px;">Copy the full URL below and paste it back into your terminal:</p>
+  <p style="color:#aaa;margin-bottom:16px;">Copy the full URL below and paste it back into ShopReel to complete authentication:</p>
   <textarea id="urlBox" rows="4" readonly></textarea>
   <br/>
   <button class="btn" onclick="copyUrl()">Copy URL</button>
@@ -111,9 +117,10 @@
 </div>
 
 <footer>
-  <span>© 2026 UniqueStore.us</span>
-  <a href="#privacy-policy">Privacy Policy</a>
-  <a href="#terms">Terms of Service</a>
+  <span>© 2026 ShopReel</span>
+  <a href="privacy.html">Privacy Policy</a>
+  <a href="terms.html">Terms of Service</a>
+  <a href="mailto:uniquestore.us@gmail.com">Contact</a>
 </footer>
 
 <script>
