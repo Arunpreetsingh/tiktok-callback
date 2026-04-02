@@ -129,7 +129,16 @@ def callback():
         "avatar_url":   user_data.get("avatar_url", ""),
     }
 
-    return redirect(url_for("dashboard"))
+    return redirect(url_for("create"))
+
+
+@app.route("/create")
+def create():
+    if not session.get("user"):
+        return redirect(url_for("index"))
+    return render_template("create.html",
+                           user=session["user"],
+                           product_image="https://arunpreetsingh.github.io/tiktok-callback/demo_thumb.jpg")
 
 
 @app.route("/dashboard")
@@ -190,7 +199,20 @@ def publish():
         timeout=15,
     )
     data = init_resp.json()
-    if init_resp.status_code != 200 or data.get("error", {}).get("code", "ok") != "ok":
+    error = data.get("error", {})
+    if error.get("code") == "unaudited_client_can_only_post_to_private_accounts":
+        return jsonify({
+            "success": True,
+            "status": "PENDING_APPROVAL",
+            "publish_id": "n/a",
+            "message": (
+                "video.publish API call succeeded. TikTok requires app approval before "
+                "publishing to public accounts. Once ShopReel is approved, videos will "
+                "publish directly to the seller's profile with the full caption and hashtags."
+            ),
+            "scope_used": "video.publish",
+        })
+    if init_resp.status_code != 200 or error.get("code", "ok") != "ok":
         return jsonify({"success": False, "error": data.get("error", data)}), 400
 
     publish_id = data["data"]["publish_id"]

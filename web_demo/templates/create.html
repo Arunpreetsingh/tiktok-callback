@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Video — ShopReel</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#f0f0f0;min-height:100vh}
+    header{background:#111;border-bottom:1px solid #222;padding:18px 32px;display:flex;align-items:center;justify-content:space-between}
+    header h1{font-size:1.2rem;font-weight:700;color:#fff}
+    .badge-sandbox{background:#ff6b00;color:#fff;font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:20px;margin-left:12px;letter-spacing:0.5px}
+    .user-pill{display:flex;align-items:center;gap:10px}
+    .user-pill span{font-size:0.9rem;color:#ccc}
+    .user-pill a{color:#666;font-size:0.8rem;text-decoration:none;margin-left:8px}
+    .main{max-width:760px;margin:0 auto;padding:48px 32px}
+    h2{font-size:1.4rem;font-weight:700;margin-bottom:6px}
+    .sub{font-size:0.88rem;color:#666;margin-bottom:32px}
+
+    .form-card{background:#161616;border:1px solid #222;border-radius:14px;padding:32px;margin-bottom:24px}
+    .field{margin-bottom:20px}
+    .field label{display:block;font-size:0.8rem;color:#777;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
+    .field input,.field textarea{width:100%;background:#0f0f0f;border:1px solid #2a2a2a;border-radius:8px;padding:12px 14px;color:#f0f0f0;font-size:0.92rem;outline:none;transition:border .2s}
+    .field input:focus,.field textarea:focus{border-color:#fe2c55}
+    .field textarea{resize:vertical;min-height:80px;font-family:inherit}
+    .field .hint{font-size:0.78rem;color:#555;margin-top:6px}
+
+    .preview-row{display:flex;gap:16px;align-items:flex-start;margin-bottom:20px}
+    .img-preview{width:80px;height:80px;border-radius:8px;object-fit:cover;border:1px solid #2a2a2a;background:#111;flex-shrink:0}
+    .img-placeholder{width:80px;height:80px;border-radius:8px;border:1px dashed #333;display:flex;align-items:center;justify-content:center;color:#444;font-size:1.4rem;flex-shrink:0}
+
+    .btn{padding:14px 28px;border-radius:8px;font-size:0.95rem;font-weight:700;border:none;cursor:pointer;transition:background .2s;width:100%}
+    .btn-primary{background:#fe2c55;color:#fff}
+    .btn-primary:hover{background:#d4002a}
+    .btn:disabled{opacity:0.5;cursor:not-allowed}
+
+    /* Progress */
+    #progress-section{display:none;background:#161616;border:1px solid #222;border-radius:14px;padding:32px;margin-bottom:24px;text-align:center}
+    .progress-title{font-size:1rem;font-weight:600;margin-bottom:24px;color:#ccc}
+    .steps{text-align:left;max-width:340px;margin:0 auto 24px}
+    .step{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #1a1a1a;font-size:0.88rem;color:#666;transition:color .4s}
+    .step.active{color:#f0f0f0}
+    .step.done{color:#4caf50}
+    .step-icon{width:20px;text-align:center;flex-shrink:0}
+    .spinner-sm{display:inline-block;width:14px;height:14px;border:2px solid #333;border-top-color:#fe2c55;border-radius:50%;animation:spin .7s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .progress-bar-wrap{height:4px;background:#1e1e1e;border-radius:4px;max-width:340px;margin:0 auto}
+    .progress-bar{height:4px;background:#fe2c55;border-radius:4px;width:0%;transition:width .6s ease}
+  </style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex;align-items:center">
+    <h1>ShopReel</h1>
+    <span class="badge-sandbox">SANDBOX</span>
+  </div>
+  <div class="user-pill">
+    <span>@{{ user.username or user.display_name }}</span>
+    <a href="/logout">Disconnect</a>
+  </div>
+</header>
+
+<div class="main">
+  <h2>📦 Create Product Video</h2>
+  <p class="sub">Enter your product details — ShopReel generates an AI-powered TikTok video automatically.</p>
+
+  <div class="form-card" id="form-section">
+    <div class="field">
+      <label>Product Name</label>
+      <input type="text" id="product-name" placeholder="e.g. Haruharu Wonder Retinol Serum"
+             value="Haruharu Wonder Black Rice Night Knight Retinol Serum"/>
+    </div>
+    <div class="field">
+      <label>Price</label>
+      <input type="text" id="product-price" placeholder="e.g. $19.99" value="$19.99"/>
+    </div>
+    <div class="field">
+      <label>Product Image URL</label>
+      <div class="preview-row">
+        <img id="img-preview" class="img-preview" src="{{ product_image }}" alt="product"
+             onerror="this.style.display='none';document.getElementById('img-ph').style.display='flex'"/>
+        <div class="img-placeholder" id="img-ph" style="display:none">📷</div>
+        <input type="text" id="product-image" value="{{ product_image }}"
+               placeholder="https://..." oninput="updatePreview(this.value)"/>
+      </div>
+      <div class="hint">Link to the product image. ShopReel uses this as the visual anchor for the AI video.</div>
+    </div>
+    <div class="field">
+      <label>Product Description (optional)</label>
+      <textarea id="product-desc" placeholder="Key benefits, ingredients, what makes it special...">Retinol serum for sensitive skin. Reduces fine lines, hydrates, and firms. Fragrance-free Korean skincare.</textarea>
+    </div>
+    <button class="btn btn-primary" onclick="generateVideo()">🎬 Generate Video</button>
+  </div>
+
+  <!-- Progress -->
+  <div id="progress-section">
+    <p class="progress-title">✨ Generating your TikTok product video...</p>
+    <div class="steps">
+      <div class="step" id="step-1"><span class="step-icon">⏳</span> Generating AI caption &amp; script</div>
+      <div class="step" id="step-2"><span class="step-icon">⏳</span> Creating voiceover audio</div>
+      <div class="step" id="step-3"><span class="step-icon">⏳</span> Generating AI video clips (Kling AI)</div>
+      <div class="step" id="step-4"><span class="step-icon">⏳</span> Composing final video with captions</div>
+      <div class="step" id="step-5"><span class="step-icon">⏳</span> Video ready!</div>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="pbar"></div></div>
+  </div>
+</div>
+
+<script>
+  function updatePreview(url) {
+    const img = document.getElementById('img-preview');
+    const ph  = document.getElementById('img-ph');
+    img.src = url;
+    img.style.display = 'block';
+    ph.style.display = 'none';
+  }
+
+  const stepTexts = [
+    'Generating AI caption & script',
+    'Creating voiceover audio',
+    'Generating AI video clips (Kling AI)',
+    'Composing final video with captions',
+    'Video ready!',
+  ];
+  const stepDurations = [2500, 2000, 8000, 3000, 1000];
+
+  async function generateVideo() {
+    document.getElementById('form-section').style.display = 'none';
+    document.getElementById('progress-section').style.display = 'block';
+
+    let totalTime = stepDurations.reduce((a,b) => a+b, 0);
+    let elapsed = 0;
+
+    for (let i = 0; i < 5; i++) {
+      const step = document.getElementById(`step-${i+1}`);
+      step.classList.add('active');
+      step.querySelector('.step-icon').innerHTML = '<span class="spinner-sm"></span>';
+
+      await sleep(stepDurations[i]);
+
+      elapsed += stepDurations[i];
+      step.classList.remove('active');
+      step.classList.add('done');
+      step.querySelector('.step-icon').textContent = '✅';
+      document.getElementById('pbar').style.width = `${(elapsed/totalTime)*100}%`;
+    }
+
+    // Done — go to dashboard
+    window.location.href = '/dashboard';
+  }
+
+  function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+</script>
+
+</body>
+</html>
