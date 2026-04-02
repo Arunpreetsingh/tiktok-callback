@@ -129,7 +129,7 @@ def callback():
         "avatar_url":   user_data.get("avatar_url", ""),
     }
 
-    return redirect(url_for("create"))
+    return redirect(url_for("dashboard"))
 
 
 @app.route("/create")

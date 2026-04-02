@@ -15,50 +15,82 @@
     .user-pill span{font-size:0.9rem;color:#ccc}
     .user-pill a{color:#666;font-size:0.8rem;text-decoration:none;margin-left:8px}
     .user-pill a:hover{color:#aaa}
-    .main{max-width:860px;margin:0 auto;padding:48px 32px}
-
-    /* Scope badge */
-    .scope-used{display:inline-block;background:#1a1a2e;border:1px solid #fe2c55;color:#fe2c55;font-size:0.72rem;font-weight:700;font-family:monospace;padding:3px 10px;border-radius:20px;margin-bottom:14px;letter-spacing:0.5px}
+    .main{max-width:900px;margin:0 auto;padding:40px 32px}
+    .scope-used{display:inline-block;background:#1a1a2e;border:1px solid #fe2c55;color:#fe2c55;font-size:0.72rem;font-weight:700;font-family:monospace;padding:3px 10px;border-radius:20px;margin-bottom:12px;letter-spacing:0.5px}
 
     /* Account card */
-    .account-card{background:#161616;border:1px solid #222;border-radius:14px;padding:28px 32px;margin-bottom:32px;display:flex;align-items:center;gap:20px}
-    .account-card img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #333}
-    .account-card .info h3{font-size:1.1rem;font-weight:700}
-    .account-card .info p{font-size:0.88rem;color:#666;margin-top:4px}
-    .check{color:#4caf50;font-size:1.1rem;margin-right:6px}
+    .account-card{background:#161616;border:1px solid #222;border-radius:14px;padding:24px 28px;margin-bottom:24px;display:flex;align-items:center;gap:16px}
+    .account-card img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid #333}
+    .account-card .info h3{font-size:1rem;font-weight:700}
+    .account-card .info p{font-size:0.82rem;color:#555;margin-top:3px}
+    .check{color:#4caf50;margin-right:5px}
 
-    /* Video card */
-    .video-card{background:#161616;border:1px solid #222;border-radius:14px;padding:28px 32px;margin-bottom:24px}
-    .video-card h2{font-size:1.1rem;font-weight:700;margin-bottom:6px}
-    .video-card .product-name{font-size:0.85rem;color:#888;margin-bottom:18px}
-    .video-preview{display:flex;gap:24px;align-items:flex-start;margin-bottom:20px}
-    .video-preview video{width:160px;height:285px;border-radius:10px;object-fit:cover;border:1px solid #333;background:#000;flex-shrink:0}
-    .video-meta{flex:1}
-    .caption-box{background:#0f0f0f;border:1px solid #2a2a2a;border-radius:8px;padding:14px;font-size:0.85rem;color:#aaa;line-height:1.7;margin-bottom:16px;white-space:pre-wrap}
-    .label{font-size:0.75rem;color:#555;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
-    .actions{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{padding:12px 24px;border-radius:8px;font-size:0.92rem;font-weight:700;border:none;cursor:pointer;transition:background .2s;display:flex;align-items:center;gap:8px}
+    /* Cards */
+    .card{background:#161616;border:1px solid #222;border-radius:14px;padding:28px 32px;margin-bottom:24px}
+    .card-title{font-size:1rem;font-weight:700;margin-bottom:4px}
+    .card-sub{font-size:0.82rem;color:#666;margin-bottom:20px}
+
+    /* Form */
+    .fields{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field.full{grid-column:1/-1}
+    .field label{font-size:0.75rem;color:#666;text-transform:uppercase;letter-spacing:0.5px}
+    .field input,.field textarea{background:#0f0f0f;border:1px solid #2a2a2a;border-radius:8px;padding:10px 13px;color:#f0f0f0;font-size:0.9rem;outline:none;transition:border .2s;font-family:inherit}
+    .field input:focus,.field textarea:focus{border-color:#fe2c55}
+    .field textarea{resize:vertical;min-height:68px}
+    .img-row{display:flex;gap:12px;align-items:center}
+    .img-thumb{width:56px;height:56px;border-radius:8px;object-fit:cover;border:1px solid #2a2a2a;background:#111;flex-shrink:0}
+
+    /* Buttons */
+    .btn{padding:11px 22px;border-radius:8px;font-size:0.9rem;font-weight:700;border:none;cursor:pointer;transition:background .2s;display:inline-flex;align-items:center;gap:7px}
     .btn-primary{background:#fe2c55;color:#fff}
     .btn-primary:hover{background:#d4002a}
     .btn-secondary{background:#1e1e1e;color:#ccc;border:1px solid #333}
     .btn-secondary:hover{background:#2a2a2a}
-    .btn:disabled{opacity:0.5;cursor:not-allowed}
+    .btn:disabled{opacity:0.45;cursor:not-allowed}
+    .btn-full{width:100%;justify-content:center}
+
+    /* Progress */
+    #progress-section{display:none}
+    .steps{margin:16px 0}
+    .step{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #1a1a1a;font-size:0.87rem;color:#555;transition:color .3s}
+    .step:last-child{border-bottom:none}
+    .step.active{color:#f0f0f0}
+    .step.done{color:#4caf50}
+    .step-icon{width:18px;text-align:center;flex-shrink:0;font-size:0.85rem}
+    .spinner-sm{display:inline-block;width:13px;height:13px;border:2px solid #333;border-top-color:#fe2c55;border-radius:50%;animation:spin .7s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .pbar-wrap{height:3px;background:#1e1e1e;border-radius:3px;margin-top:16px}
+    .pbar{height:3px;background:#fe2c55;border-radius:3px;width:0%;transition:width .5s ease}
+
+    /* Video section */
+    #video-section{display:none}
+    .video-layout{display:flex;gap:24px;align-items:flex-start}
+    .video-layout video{width:150px;height:267px;border-radius:10px;object-fit:cover;border:1px solid #2a2a2a;background:#000;flex-shrink:0}
+    .video-right{flex:1}
+    .label{font-size:0.73rem;color:#555;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+    .caption-box{background:#0f0f0f;border:1px solid #2a2a2a;border-radius:8px;padding:12px;font-size:0.83rem;color:#aaa;line-height:1.7;margin-bottom:14px}
+    .action-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
 
     /* Status */
-    .status-box{display:none;margin-top:18px;padding:16px 20px;border-radius:10px;font-size:0.9rem;line-height:1.6}
+    .status-box{display:none;margin-top:12px;padding:14px 18px;border-radius:10px;font-size:0.87rem;line-height:1.6}
     .status-box.loading{background:#151515;border:1px solid #333;color:#888}
     .status-box.success{background:#0d1f0d;border:1px solid #2e7d32;color:#81c784}
     .status-box.error{background:#1f0d0d;border:1px solid #7d2e2e;color:#e57373}
-    .spinner{display:inline-block;width:14px;height:14px;border:2px solid #444;border-top-color:#fe2c55;border-radius:50%;animation:spin .7s linear infinite;margin-right:8px;vertical-align:middle}
-    @keyframes spin{to{transform:rotate(360deg)}}
 
-    .divider{border:none;border-top:1px solid #1e1e1e;margin:32px 0}
+    /* Scope info */
+    .scope-info{background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:18px 22px;margin-top:24px}
+    .scope-info h3{font-size:0.75rem;color:#444;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px}
+    .scope-row{display:flex;gap:12px;margin-bottom:8px;font-size:0.82rem}
+    .scope-row:last-child{margin-bottom:0}
+    .scope-tag{font-family:monospace;color:#fe2c55;min-width:145px;flex-shrink:0}
+    .scope-desc{color:#666;line-height:1.6}
 
-    .scope-explain{background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:20px 24px;margin-top:32px}
-    .scope-explain h3{font-size:0.9rem;color:#555;margin-bottom:14px;text-transform:uppercase;letter-spacing:0.5px}
-    .scope-row{display:flex;gap:12px;margin-bottom:10px;font-size:0.85rem}
-    .scope-row .tag{font-family:monospace;color:#fe2c55;min-width:150px;flex-shrink:0}
-    .scope-row .desc{color:#777;line-height:1.6}
+    @media(max-width:600px){
+      .fields{grid-template-columns:1fr}
+      .field.full{grid-column:1}
+      .video-layout{flex-direction:column}
+    }
   </style>
 </head>
 <body>
@@ -69,9 +101,7 @@
     <span class="badge-sandbox">SANDBOX</span>
   </div>
   <div class="user-pill">
-    {% if user.avatar_url %}
-      <img src="{{ user.avatar_url }}" alt="avatar"/>
-    {% endif %}
+    {% if user.avatar_url %}<img src="{{ user.avatar_url }}" alt="avatar"/>{% endif %}
     <span>@{{ user.username or user.display_name }}</span>
     <a href="/logout">Disconnect</a>
   </div>
@@ -79,76 +109,139 @@
 
 <div class="main">
 
-  <!-- Scope 1: user.info.basic -->
+  <!-- user.info.basic -->
   <div class="account-card">
-    <div style="flex:1">
+    <div>
       <div class="scope-used">user.info.basic</div>
-      <div style="display:flex;align-items:center;gap:16px">
-        {% if user.avatar_url %}
-          <img src="{{ user.avatar_url }}" alt="avatar"/>
-        {% endif %}
+      <div style="display:flex;align-items:center;gap:14px">
+        {% if user.avatar_url %}<img src="{{ user.avatar_url }}" alt="avatar"/>{% endif %}
         <div class="info">
-          <h3><span class="check">✓</span> Connected TikTok Account</h3>
-          <p>@{{ user.username or user.display_name }} · {{ user.display_name }}</p>
-          <p style="margin-top:6px;font-size:0.82rem;color:#555">
-            ShopReel fetched your account info using <code style="color:#fe2c55">user.info.basic</code> to confirm your TikTok account is connected before publishing.
-          </p>
+          <h3><span class="check">✓</span>Connected TikTok Account</h3>
+          <p>@{{ user.username or user.display_name }} · Fetched via user.info.basic after OAuth login</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Scope 2 & 3: video -->
-  <div class="video-card">
+  <!-- Create Video -->
+  <div class="card">
     <div class="scope-used">video.upload &nbsp;·&nbsp; video.publish</div>
-    <h2>📦 Product Video Ready</h2>
-    <p class="product-name">Haruharu Wonder Black Rice Night Knight Retinol Serum — AI-generated product video</p>
+    <div class="card-title">🎬 Create & Publish Product Video</div>
+    <div class="card-sub">Enter product details — ShopReel generates an AI-powered TikTok video and publishes it to your account.</div>
 
-    <div class="video-preview">
-      <video controls muted loop playsinline>
-        <source src="{{ video_url }}" type="video/mp4"/>
-      </video>
-
-      <div class="video-meta">
-        <div class="label">Caption & Hashtags</div>
-        <div class="caption-box">{{ caption }}</div>
-
-        <div class="label">Publish Options</div>
-        <div class="actions">
-          <button class="btn btn-secondary" id="btn-draft" onclick="uploadDraft()">
-            📥 Upload as Draft
-          </button>
-          <button class="btn btn-primary" id="btn-publish" onclick="publishVideo()">
-            🚀 Publish to TikTok
-          </button>
+    <!-- Form -->
+    <div id="form-section">
+      <div class="fields">
+        <div class="field">
+          <label>Product Name</label>
+          <input id="pname" type="text" value="Haruharu Wonder Retinol Serum"/>
         </div>
+        <div class="field">
+          <label>Price</label>
+          <input id="pprice" type="text" value="$19.99"/>
+        </div>
+        <div class="field full">
+          <label>Product Image URL</label>
+          <div class="img-row">
+            <img id="img-thumb" class="img-thumb" src="{{ product_image }}"
+                 onerror="this.src=''" alt="product"/>
+            <input id="pimage" type="text" value="{{ product_image }}"
+                   oninput="document.getElementById('img-thumb').src=this.value"
+                   placeholder="https://..."/>
+          </div>
+        </div>
+        <div class="field full">
+          <label>Key Benefits (optional)</label>
+          <textarea id="pdesc">Retinol serum for sensitive skin. Reduces fine lines, hydrates and firms skin overnight. Fragrance-free Korean skincare.</textarea>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-full" onclick="startGenerate()">🎬 Generate Video</button>
+    </div>
 
-        <div class="status-box" id="status-draft"></div>
-        <div class="status-box" id="status-publish"></div>
+    <!-- Progress -->
+    <div id="progress-section">
+      <div class="steps">
+        <div class="step" id="s1"><span class="step-icon">⏳</span>Generating AI caption &amp; voiceover script</div>
+        <div class="step" id="s2"><span class="step-icon">⏳</span>Creating voiceover audio (en-US-AriaNeural)</div>
+        <div class="step" id="s3"><span class="step-icon">⏳</span>Generating AI video clips (Kling AI img2video)</div>
+        <div class="step" id="s4"><span class="step-icon">⏳</span>Composing final video with animated captions</div>
+        <div class="step" id="s5"><span class="step-icon">⏳</span>Video ready to publish!</div>
+      </div>
+      <div class="pbar-wrap"><div class="pbar" id="pbar"></div></div>
+    </div>
+
+    <!-- Video + publish -->
+    <div id="video-section">
+      <div class="video-layout">
+        <video id="demo-video" controls muted loop playsinline>
+          <source src="{{ video_url }}" type="video/mp4"/>
+        </video>
+        <div class="video-right">
+          <div class="label">Caption &amp; Hashtags</div>
+          <div class="caption-box">{{ caption }}</div>
+          <div class="label">Publish Options</div>
+          <div class="action-btns">
+            <button class="btn btn-secondary" id="btn-draft" onclick="uploadDraft()">📥 Upload as Draft</button>
+            <button class="btn btn-primary" id="btn-publish" onclick="publishVideo()">🚀 Publish to TikTok</button>
+          </div>
+          <div class="status-box" id="status-draft"></div>
+          <div class="status-box" id="status-publish"></div>
+          <button class="btn btn-secondary" style="margin-top:14px;font-size:0.8rem" onclick="resetForm()">+ Create Another Video</button>
+        </div>
       </div>
     </div>
+
   </div>
 
   <!-- Scope explanation -->
-  <div class="scope-explain">
+  <div class="scope-info">
     <h3>How Each Scope Is Used</h3>
     <div class="scope-row">
-      <span class="tag">user.info.basic</span>
-      <span class="desc">Fetches the seller's TikTok username and display name immediately after OAuth login to confirm the correct account is connected.</span>
+      <span class="scope-tag">user.info.basic</span>
+      <span class="scope-desc">Fetches the seller's TikTok username after OAuth login to confirm the correct account is connected before publishing.</span>
     </div>
     <div class="scope-row">
-      <span class="tag">video.upload</span>
-      <span class="desc">"Upload as Draft" — sends the AI-generated product video to the seller's TikTok inbox. The seller reviews it in the TikTok app before posting publicly.</span>
+      <span class="scope-tag">video.upload</span>
+      <span class="scope-desc">"Upload as Draft" — sends the AI-generated product video to the seller's TikTok inbox for review before posting publicly.</span>
     </div>
     <div class="scope-row">
-      <span class="tag">video.publish</span>
-      <span class="desc">"Publish to TikTok" — posts the product video directly to the seller's TikTok profile with the AI-generated caption, hashtags, and privacy settings.</span>
+      <span class="scope-tag">video.publish</span>
+      <span class="scope-desc">"Publish to TikTok" — posts the video directly to the seller's TikTok profile with the AI-generated caption and hashtags.</span>
     </div>
   </div>
 
 </div>
 
 <script>
+  const stepDurations = [2500, 2000, 8000, 3000, 1000];
+
+  async function startGenerate() {
+    document.getElementById('form-section').style.display = 'none';
+    document.getElementById('progress-section').style.display = 'block';
+    const total = stepDurations.reduce((a,b)=>a+b,0);
+    let elapsed = 0;
+    for (let i = 1; i <= 5; i++) {
+      const s = document.getElementById(`s${i}`);
+      s.classList.add('active');
+      s.querySelector('.step-icon').innerHTML = '<span class="spinner-sm"></span>';
+      await sleep(stepDurations[i-1]);
+      elapsed += stepDurations[i-1];
+      s.classList.remove('active'); s.classList.add('done');
+      s.querySelector('.step-icon').textContent = '✅';
+      document.getElementById('pbar').style.width = `${(elapsed/total)*100}%`;
+    }
+    document.getElementById('progress-section').style.display = 'none';
+    document.getElementById('video-section').style.display = 'block';
+    document.getElementById('demo-video').play();
+  }
+
+  function resetForm() {
+    document.getElementById('video-section').style.display = 'none';
+    document.getElementById('status-draft').style.display = 'none';
+    document.getElementById('status-publish').style.display = 'none';
+    document.getElementById('form-section').style.display = 'block';
+  }
+
   function setStatus(id, type, html) {
     const el = document.getElementById(id);
     el.className = `status-box ${type}`;
@@ -160,22 +253,19 @@
     const btn = document.getElementById('btn-draft');
     btn.disabled = true;
     document.getElementById('btn-publish').disabled = true;
-    setStatus('status-draft', 'loading',
-      '<span class="spinner"></span> Uploading video to TikTok inbox via <code style="color:#fe2c55">video.upload</code>... this may take 30–60 seconds.');
     document.getElementById('status-publish').style.display = 'none';
-
+    setStatus('status-draft', 'loading',
+      '<span class="spinner-sm"></span> Uploading to TikTok inbox via <code style="color:#fe2c55">video.upload</code>...');
     try {
-      const resp = await fetch('/api/upload-draft', { method: 'POST' });
-      const data = await resp.json();
-      if (data.success) {
+      const r = await fetch('/api/upload-draft', {method:'POST'});
+      const d = await r.json();
+      if (d.success) {
         setStatus('status-draft', 'success',
-          `✅ <strong>video.upload success</strong><br>${data.message}<br><small style="color:#555">publish_id: ${data.publish_id}</small>`);
+          `✅ <strong>video.upload success</strong><br>${d.message}<br><small style="color:#555">publish_id: ${d.publish_id}</small>`);
       } else {
-        setStatus('status-draft', 'error', `❌ Error: ${JSON.stringify(data.error)}`);
+        setStatus('status-draft', 'error', `❌ ${JSON.stringify(d.error)}`);
       }
-    } catch(e) {
-      setStatus('status-draft', 'error', `❌ Network error: ${e.message}`);
-    }
+    } catch(e) { setStatus('status-draft', 'error', `❌ ${e.message}`); }
     btn.disabled = false;
     document.getElementById('btn-publish').disabled = false;
   }
@@ -184,25 +274,24 @@
     const btn = document.getElementById('btn-publish');
     btn.disabled = true;
     document.getElementById('btn-draft').disabled = true;
-    setStatus('status-publish', 'loading',
-      '<span class="spinner"></span> Publishing video via <code style="color:#fe2c55">video.publish</code>... this may take 60–90 seconds.');
     document.getElementById('status-draft').style.display = 'none';
-
+    setStatus('status-publish', 'loading',
+      '<span class="spinner-sm"></span> Publishing via <code style="color:#fe2c55">video.publish</code>...');
     try {
-      const resp = await fetch('/api/publish', { method: 'POST' });
-      const data = await resp.json();
-      if (data.success) {
+      const r = await fetch('/api/publish', {method:'POST'});
+      const d = await r.json();
+      if (d.success) {
         setStatus('status-publish', 'success',
-          `✅ <strong>video.publish success</strong> (status: ${data.status})<br>${data.message}<br><small style="color:#555">publish_id: ${data.publish_id}</small>`);
+          `✅ <strong>video.publish success</strong> (${d.status})<br>${d.message}<br><small style="color:#555">publish_id: ${d.publish_id}</small>`);
       } else {
-        setStatus('status-publish', 'error', `❌ Error: ${JSON.stringify(data.error)}`);
+        setStatus('status-publish', 'error', `❌ ${JSON.stringify(d.error)}`);
       }
-    } catch(e) {
-      setStatus('status-publish', 'error', `❌ Network error: ${e.message}`);
-    }
+    } catch(e) { setStatus('status-publish', 'error', `❌ ${e.message}`); }
     btn.disabled = false;
     document.getElementById('btn-draft').disabled = false;
   }
+
+  function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
 </script>
 
 </body>
