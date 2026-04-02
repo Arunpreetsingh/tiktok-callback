@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — ShopReel</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#f0f0f0;min-height:100vh}
+    header{background:#111;border-bottom:1px solid #222;padding:18px 32px;display:flex;align-items:center;justify-content:space-between}
+    header h1{font-size:1.2rem;font-weight:700;color:#fff}
+    .badge-sandbox{background:#ff6b00;color:#fff;font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:20px;margin-left:12px;letter-spacing:0.5px}
+    .user-pill{display:flex;align-items:center;gap:10px}
+    .user-pill img{width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid #333}
+    .user-pill span{font-size:0.9rem;color:#ccc}
+    .user-pill a{color:#666;font-size:0.8rem;text-decoration:none;margin-left:8px}
+    .user-pill a:hover{color:#aaa}
+    .main{max-width:860px;margin:0 auto;padding:48px 32px}
+
+    /* Scope badge */
+    .scope-used{display:inline-block;background:#1a1a2e;border:1px solid #fe2c55;color:#fe2c55;font-size:0.72rem;font-weight:700;font-family:monospace;padding:3px 10px;border-radius:20px;margin-bottom:14px;letter-spacing:0.5px}
+
+    /* Account card */
+    .account-card{background:#161616;border:1px solid #222;border-radius:14px;padding:28px 32px;margin-bottom:32px;display:flex;align-items:center;gap:20px}
+    .account-card img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #333}
+    .account-card .info h3{font-size:1.1rem;font-weight:700}
+    .account-card .info p{font-size:0.88rem;color:#666;margin-top:4px}
+    .check{color:#4caf50;font-size:1.1rem;margin-right:6px}
+
+    /* Video card */
+    .video-card{background:#161616;border:1px solid #222;border-radius:14px;padding:28px 32px;margin-bottom:24px}
+    .video-card h2{font-size:1.1rem;font-weight:700;margin-bottom:6px}
+    .video-card .product-name{font-size:0.85rem;color:#888;margin-bottom:18px}
+    .video-preview{display:flex;gap:24px;align-items:flex-start;margin-bottom:20px}
+    .video-preview video{width:160px;height:285px;border-radius:10px;object-fit:cover;border:1px solid #333;background:#000;flex-shrink:0}
+    .video-meta{flex:1}
+    .caption-box{background:#0f0f0f;border:1px solid #2a2a2a;border-radius:8px;padding:14px;font-size:0.85rem;color:#aaa;line-height:1.7;margin-bottom:16px;white-space:pre-wrap}
+    .label{font-size:0.75rem;color:#555;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:12px 24px;border-radius:8px;font-size:0.92rem;font-weight:700;border:none;cursor:pointer;transition:background .2s;display:flex;align-items:center;gap:8px}
+    .btn-primary{background:#fe2c55;color:#fff}
+    .btn-primary:hover{background:#d4002a}
+    .btn-secondary{background:#1e1e1e;color:#ccc;border:1px solid #333}
+    .btn-secondary:hover{background:#2a2a2a}
+    .btn:disabled{opacity:0.5;cursor:not-allowed}
+
+    /* Status */
+    .status-box{display:none;margin-top:18px;padding:16px 20px;border-radius:10px;font-size:0.9rem;line-height:1.6}
+    .status-box.loading{background:#151515;border:1px solid #333;color:#888}
+    .status-box.success{background:#0d1f0d;border:1px solid #2e7d32;color:#81c784}
+    .status-box.error{background:#1f0d0d;border:1px solid #7d2e2e;color:#e57373}
+    .spinner{display:inline-block;width:14px;height:14px;border:2px solid #444;border-top-color:#fe2c55;border-radius:50%;animation:spin .7s linear infinite;margin-right:8px;vertical-align:middle}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .divider{border:none;border-top:1px solid #1e1e1e;margin:32px 0}
+
+    .scope-explain{background:#111;border:1px solid #1e1e1e;border-radius:10px;padding:20px 24px;margin-top:32px}
+    .scope-explain h3{font-size:0.9rem;color:#555;margin-bottom:14px;text-transform:uppercase;letter-spacing:0.5px}
+    .scope-row{display:flex;gap:12px;margin-bottom:10px;font-size:0.85rem}
+    .scope-row .tag{font-family:monospace;color:#fe2c55;min-width:150px;flex-shrink:0}
+    .scope-row .desc{color:#777;line-height:1.6}
+  </style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex;align-items:center">
+    <h1>ShopReel</h1>
+    <span class="badge-sandbox">SANDBOX</span>
+  </div>
+  <div class="user-pill">
+    {% if user.avatar_url %}
+      <img src="{{ user.avatar_url }}" alt="avatar"/>
+    {% endif %}
+    <span>@{{ user.username or user.display_name }}</span>
+    <a href="/logout">Disconnect</a>
+  </div>
+</header>
+
+<div class="main">
+
+  <!-- Scope 1: user.info.basic -->
+  <div class="account-card">
+    <div style="flex:1">
+      <div class="scope-used">user.info.basic</div>
+      <div style="display:flex;align-items:center;gap:16px">
+        {% if user.avatar_url %}
+          <img src="{{ user.avatar_url }}" alt="avatar"/>
+        {% endif %}
+        <div class="info">
+          <h3><span class="check">✓</span> Connected TikTok Account</h3>
+          <p>@{{ user.username or user.display_name }} · {{ user.display_name }}</p>
+          <p style="margin-top:6px;font-size:0.82rem;color:#555">
+            ShopReel fetched your account info using <code style="color:#fe2c55">user.info.basic</code> to confirm your TikTok account is connected before publishing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scope 2 & 3: video -->
+  <div class="video-card">
+    <div class="scope-used">video.upload &nbsp;·&nbsp; video.publish</div>
+    <h2>📦 Product Video Ready</h2>
+    <p class="product-name">Haruharu Wonder Black Rice Night Knight Retinol Serum — AI-generated product video</p>
+
+    <div class="video-preview">
+      <video controls muted loop playsinline>
+        <source src="{{ video_url }}" type="video/mp4"/>
+      </video>
+
+      <div class="video-meta">
+        <div class="label">Caption & Hashtags</div>
+        <div class="caption-box">{{ caption }}</div>
+
+        <div class="label">Publish Options</div>
+        <div class="actions">
+          <button class="btn btn-secondary" id="btn-draft" onclick="uploadDraft()">
+            📥 Upload as Draft
+          </button>
+          <button class="btn btn-primary" id="btn-publish" onclick="publishVideo()">
+            🚀 Publish to TikTok
+          </button>
+        </div>
+
+        <div class="status-box" id="status-draft"></div>
+        <div class="status-box" id="status-publish"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scope explanation -->
+  <div class="scope-explain">
+    <h3>How Each Scope Is Used</h3>
+    <div class="scope-row">
+      <span class="tag">user.info.basic</span>
+      <span class="desc">Fetches the seller's TikTok username and display name immediately after OAuth login to confirm the correct account is connected.</span>
+    </div>
+    <div class="scope-row">
+      <span class="tag">video.upload</span>
+      <span class="desc">"Upload as Draft" — sends the AI-generated product video to the seller's TikTok inbox. The seller reviews it in the TikTok app before posting publicly.</span>
+    </div>
+    <div class="scope-row">
+      <span class="tag">video.publish</span>
+      <span class="desc">"Publish to TikTok" — posts the product video directly to the seller's TikTok profile with the AI-generated caption, hashtags, and privacy settings.</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function setStatus(id, type, html) {
+    const el = document.getElementById(id);
+    el.className = `status-box ${type}`;
+    el.innerHTML = html;
+    el.style.display = 'block';
+  }
+
+  async function uploadDraft() {
+    const btn = document.getElementById('btn-draft');
+    btn.disabled = true;
+    document.getElementById('btn-publish').disabled = true;
+    setStatus('status-draft', 'loading',
+      '<span class="spinner"></span> Uploading video to TikTok inbox via <code style="color:#fe2c55">video.upload</code>... this may take 30–60 seconds.');
+    document.getElementById('status-publish').style.display = 'none';
+
+    try {
+      const resp = await fetch('/api/upload-draft', { method: 'POST' });
+      const data = await resp.json();
+      if (data.success) {
+        setStatus('status-draft', 'success',
+          `✅ <strong>video.upload success</strong><br>${data.message}<br><small style="color:#555">publish_id: ${data.publish_id}</small>`);
+      } else {
+        setStatus('status-draft', 'error', `❌ Error: ${JSON.stringify(data.error)}`);
+      }
+    } catch(e) {
+      setStatus('status-draft', 'error', `❌ Network error: ${e.message}`);
+    }
+    btn.disabled = false;
+    document.getElementById('btn-publish').disabled = false;
+  }
+
+  async function publishVideo() {
+    const btn = document.getElementById('btn-publish');
+    btn.disabled = true;
+    document.getElementById('btn-draft').disabled = true;
+    setStatus('status-publish', 'loading',
+      '<span class="spinner"></span> Publishing video via <code style="color:#fe2c55">video.publish</code>... this may take 60–90 seconds.');
+    document.getElementById('status-draft').style.display = 'none';
+
+    try {
+      const resp = await fetch('/api/publish', { method: 'POST' });
+      const data = await resp.json();
+      if (data.success) {
+        setStatus('status-publish', 'success',
+          `✅ <strong>video.publish success</strong> (status: ${data.status})<br>${data.message}<br><small style="color:#555">publish_id: ${data.publish_id}</small>`);
+      } else {
+        setStatus('status-publish', 'error', `❌ Error: ${JSON.stringify(data.error)}`);
+      }
+    } catch(e) {
+      setStatus('status-publish', 'error', `❌ Network error: ${e.message}`);
+    }
+    btn.disabled = false;
+    document.getElementById('btn-draft').disabled = false;
+  }
+</script>
+
+</body>
+</html>

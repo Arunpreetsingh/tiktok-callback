@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopReel — TikTok Shop Video Automation</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#f0f0f0;min-height:100vh}
+    header{background:#111;border-bottom:1px solid #222;padding:18px 32px;display:flex;align-items:center;justify-content:space-between}
+    header h1{font-size:1.2rem;font-weight:700;color:#fff}
+    .badge-sandbox{background:#ff6b00;color:#fff;font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:20px;margin-left:12px;letter-spacing:0.5px}
+    .hero{padding:90px 32px 70px;text-align:center;max-width:760px;margin:0 auto}
+    .badge{display:inline-block;background:#fe2c55;color:#fff;font-size:0.75rem;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:20px;letter-spacing:0.5px}
+    .hero h2{font-size:2.6rem;font-weight:700;line-height:1.2;margin-bottom:18px}
+    .hero p{font-size:1.05rem;color:#aaa;line-height:1.8;max-width:580px;margin:0 auto 36px}
+    .btn-connect{display:inline-flex;align-items:center;gap:10px;background:#fe2c55;color:#fff;padding:16px 36px;border-radius:10px;font-size:1rem;font-weight:700;text-decoration:none;transition:background .2s}
+    .btn-connect:hover{background:#d4002a}
+    .btn-connect svg{width:22px;height:22px;fill:#fff}
+    .scopes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:20px 32px 60px;max-width:960px;margin:0 auto}
+    .scope-card{background:#161616;border:1px solid #222;border-radius:12px;padding:24px}
+    .scope-card .tag{font-family:monospace;font-size:0.85rem;color:#fe2c55;font-weight:700;margin-bottom:10px}
+    .scope-card p{font-size:0.88rem;color:#888;line-height:1.7}
+    footer{border-top:1px solid #222;padding:20px 32px;text-align:center;color:#555;font-size:0.82rem}
+    footer a{color:#777;text-decoration:none;margin:0 10px}
+    footer a:hover{color:#aaa}
+    .sandbox-notice{background:#1a1200;border:1px solid #ff6b00;border-radius:8px;padding:12px 20px;margin:0 auto 32px;max-width:580px;font-size:0.85rem;color:#ff9d3d;text-align:center}
+  </style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex;align-items:center">
+    <h1>ShopReel</h1>
+    <span class="badge-sandbox">SANDBOX</span>
+  </div>
+  <div style="font-size:0.85rem;color:#555">TikTok Content Posting API</div>
+</header>
+
+<section class="hero">
+  <span class="badge">TikTok Content Posting API</span>
+  <h2>Automate Product Videos<br>for TikTok Shop Sellers</h2>
+  <p>ShopReel helps e-commerce sellers create and publish short-form product videos directly to their TikTok accounts using the TikTok Content Posting API. Sellers connect their own TikTok account via OAuth 2.0 and publish videos on their behalf.</p>
+
+  <div class="sandbox-notice">
+    🧪 This is a <strong>sandbox demo</strong> — running against TikTok Developer Sandbox environment.
+  </div>
+
+  {% if user %}
+    <a href="/dashboard" class="btn-connect">
+      Go to Dashboard →
+    </a>
+  {% else %}
+    <a href="/login" class="btn-connect">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.56V6.79a4.85 4.85 0 0 1-1.07-.1z"/></svg>
+      Connect TikTok Account
+    </a>
+  {% endif %}
+</section>
+
+<div class="scopes">
+  <div class="scope-card">
+    <div class="tag">user.info.basic</div>
+    <p>After OAuth login, ShopReel fetches the seller's TikTok username and display name to confirm which account is connected before publishing any video.</p>
+  </div>
+  <div class="scope-card">
+    <div class="tag">video.upload</div>
+    <p>Uploads the generated product video to the seller's TikTok inbox as a draft. The seller receives a notification, reviews the video in the TikTok app, then posts it.</p>
+  </div>
+  <div class="scope-card">
+    <div class="tag">video.publish</div>
+    <p>Publishes the product video directly to the seller's TikTok profile with a caption, hashtags, and privacy settings specified by the seller.</p>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 ShopReel</span>
+  <a href="https://arunpreetsingh.github.io/tiktok-callback/privacy.html">Privacy Policy</a>
+  <a href="https://arunpreetsingh.github.io/tiktok-callback/terms.html">Terms of Service</a>
+</footer>
+
+</body>
+</html>
