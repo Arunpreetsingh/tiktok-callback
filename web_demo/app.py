@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-web_demo/app.py — ShopReel web UI demo for TikTok app review.
+web_demo/app.py — ShopReels web UI demo for TikTok app review.
 
 Demonstrates all 3 API scopes via a browser UI:
   1. user.info.basic  — OAuth login, display connected account
@@ -207,7 +207,7 @@ def publish():
             "publish_id": "n/a",
             "message": (
                 "video.publish API call succeeded. TikTok requires app approval before "
-                "publishing to public accounts. Once ShopReel is approved, videos will "
+                "publishing to public accounts. Once ShopReels is approved, videos will "
                 "publish directly to the seller's profile with the full caption and hashtags."
             ),
             "scope_used": "video.publish",
@@ -254,6 +254,6 @@ def logout():
 
 
 if __name__ == "__main__":
-    print("\n  ShopReel Demo Server")
+    print("\n  ShopReels Demo Server")
     print("  Open: http://localhost:8080\n")
     app.run(debug=False, port=8080)
