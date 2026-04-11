@@ -258,6 +258,16 @@ def tiktok_verify_2():
     return "tiktok-developers-site-verification=o3MeCZcmKL04FQHL26JKiS2CaaTMdwT4", 200, {"Content-Type": "text/plain"}
 
 
+@app.route("/privacy/tiktok0KV41nYwmIHbVPYepkUW0sW0zToRArZA.txt")
+def tiktok_verify_3():
+    return "tiktok-developers-site-verification=0KV41nYwmIHbVPYepkUW0sW0zToRArZA", 200, {"Content-Type": "text/plain"}
+
+
+@app.route("/terms/tiktokyTEKjtFM6laKUiG74ZrhaN5ipZUINUqA.txt")
+def tiktok_verify_4():
+    return "tiktok-developers-site-verification=yTEKjtFM6laKUiG74ZrhaN5ipZUINUqA", 200, {"Content-Type": "text/plain"}
+
+
 @app.route("/privacy")
 def privacy():
     return render_template("privacy.html")
