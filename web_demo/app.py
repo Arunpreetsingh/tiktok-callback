@@ -252,6 +252,11 @@ def tiktok_verify():
     return "tiktok-developers-site-verification=ffRGCR1H5Eq0zP55OFtDXPybJqZND2Sx", 200, {"Content-Type": "text/plain"}
 
 
+@app.route("/tiktoko3MeCZcmKL04FQHL26JKiS2CaaTMdwT4.txt")
+def tiktok_verify_2():
+    return "tiktok-developers-site-verification=o3MeCZcmKL04FQHL26JKiS2CaaTMdwT4", 200, {"Content-Type": "text/plain"}
+
+
 @app.route("/privacy")
 def privacy():
     return render_template("privacy.html")
