@@ -248,6 +248,7 @@ def publish():
 
 
 @app.route("/tiktokffRGCR1H5Eq0zP55OFtDXPybJqZND2Sx.txt")
+@app.route("/callback/tiktokffRGCR1H5Eq0zP55OFtDXPybJqZND2Sx.txt")
 def tiktok_verify():
     return "tiktok-developers-site-verification=ffRGCR1H5Eq0zP55OFtDXPybJqZND2Sx", 200, {"Content-Type": "text/plain"}
 
